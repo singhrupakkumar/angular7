@@ -1,0 +1,106 @@
+<div class="outer-wrapper">
+  <div class="head-sec">
+    <h6>Edit Profile</h6>
+  </div>
+  <form [formGroup]="jobProviderProfileForm" (ngSubmit)="updateProfile(jobProviderProfileForm.valid,jobProviderProfileForm.value)">
+    <div class="personal-details">
+      <div class="avatar">
+        <div class="avatar-inner">
+          <img src="/assets/images/avatar.png" alt="Avatar">
+        </div>
+        <a href="#">
+          <input type="file" name="" value="">
+          <i class="fa fa-camera" aria-hidden="true"></i>
+        </a>
+      </div>	
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" formControlName="email" disabled>
+      </div>
+      <div class="form-group">
+        <input type="tel" class="form-control" formControlName="phoneNumber" placeholder="Phone Number">
+      </div>
+      <div class="form-group">
+        <select class="form-control" formControlName="stateId" (change)="getCities($event.target.value)">
+          <option value="">Select State</option>	
+          <option *ngFor="let state of states" value="{{state._id}}">{{state.name}}</option>								
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="form-control" formControlName="cityId">
+          <option value="">Select City</option>		
+          <option *ngFor="let city of cities" value="{{city._id}}">{{city.name}}</option>							
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="zipcode" placeholder="Zip">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="address" placeholder="Address Line 1">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="address1" placeholder="Address Line 2">
+      </div>
+    </div>
+    <div class="oragnisation-part">
+      <label>Are You a Part of and Organisation?</label>
+      <div class="form-group">
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="organisationPart" id="show" name="organisationPart" value="1">
+            <span class="custom-radio-button"></span>
+            Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="organisationPart" id="hide" name="organisationPart" value="0">
+            <span class="custom-radio-button"></span>
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="organisation-details">
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="companyDesignation" placeholder="Designation">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" formControlName="companyName" placeholder="Company Name">
+      </div>
+      <div class="form-group">
+        <input type="tel" class="form-control" formControlName="companyPhoneNumber" placeholder="Company Contact">
+      </div>
+      <div class="form-group">
+        <select class="form-control" formControlName="companyStateId" (change)="getCompanyCities($event.target.value)">
+          <option value="">Select State</option>
+          <option *ngFor="let state of states" value="{{state._id}}">{{state.name}}</option>										
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="form-control" formControlName="companyCityId" >
+          <option value="">Select City</option>	
+          <option *ngFor="let city of companyCities" value="{{city._id}}">{{city.name}}</option>								
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="companyZipcode" placeholder="Zipcode">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="companyAddress" placeholder="Address Line 1">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="companyAddress1" placeholder="Address Line 2">
+      </div>
+    </div>
+    <div class="form-group btn-sec">
+      <input type="submit" class="btn btn-primary btn-st" value="Save Changes">
+    </div>
+  </form>
+  <div class="foot-sec">
+    <a href="#">Changes Password</a>
+    <a href="#">Add Card</a>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+  <header class="st_header">
+    <nav class="navbar navbar-expand-lg navbar-dark st-navbar">
+      <div class="container">		
+        <a class="navbar-brand" href="/homepage"><img src="./assets/images/logo.png" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <form id="" class="form-inline ml-auto mr-3" name="" method="" action="">
+            <input type="text" id="" class="form-control" name="" value="" placeholder="Search Here">
+            <button type="button" class="btn btn-primary btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </form>
+          <ul class="navbar-nav">
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/homepage']">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/homepage']">Jobs</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLogedIn">
+              <a class="nav-link" [routerLink]="['/homepage']">Services</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/homepage']">News</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLogedIn && isProvider">
+              <a class="nav-link" [routerLink]="['/job-provider-profile']">My Profile</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLogedIn && isSeeker">
+              <a class="nav-link" [routerLink]="['/job-seeker-profile']">My Profile</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!isLogedIn">
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!isLogedIn">
+              <a class="nav-link" data-toggle="modal" data-target="#register">Register</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLogedIn">
+              <a class="nav-link" href="javascript:" (click)="signout()">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><img src="./assets/images/wallet.png" alt="Wallet"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><img src="./assets/images/globe.png" alt="Globe"></a>
+            </li>
+            <li class="nav-item" *ngIf="isLogedIn">
+              <a class="nav-link" href="#"><img src="./assets/images/notification.png" alt="Globe"><span class="badge badge-danger">2</span></a>
+            </li>
+          </ul>
+          <select>
+            <option>English</option>
+            <option>Spanish</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+  </header><!--/.st_header-->
+
+
+  <!-- The Modal -->
+	<div class="modal" id="register">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Register As</h1>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <a href="/register-jobseeker" class="btn btn-primary btn-st btn-block">Applicant</a>
+          <a href="/register-jobprovider" class="btn btn-outline-primary btn-st-outline btn-block">Job Provider</a>
+        </div>
+      </div>
+    </div>
+  </div>

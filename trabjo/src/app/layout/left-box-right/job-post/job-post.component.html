@@ -1,0 +1,180 @@
+<div class="outer-wrapper">
+  <div class="head-sec">
+    <h6>Job Post</h6>
+    <p>For each job post $5 will be charged</p>
+  </div>
+  <form [formGroup]="jobPostForm" (ngSubmit)="postJob(jobPostForm.valid,jobPostForm.value)">
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Industry Name</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <select formControlName="industryId" class="form-control" (change)="jobRoles($event.target.value)">
+          <option value="">Select Industry</option>
+          <option *ngFor="let industries of industriesListData" value="{{industries._id}}">{{industries.name}}</option>
+        </select>
+        <!-- <div class="text-error" *ngIf="jobPostForm.controls['industryId'].errors?.required && show">Please select
+          Industry!
+        </div> -->
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Job Role</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <select formControlName="jobRoleId" class="form-control">
+          <option>Select Job Role</option>
+          <option *ngFor="let jobRole of jobRoleListData" value="{{jobRole._id}}">{{jobRole.name}}</option>
+        </select>
+        <!-- <div class="text-error" *ngIf="jobPostForm.controls['jobRoleId'].errors?.required && show">Please select
+          Job Role!
+        </div> -->
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Job Type</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <select formControlName="jobType" class="form-control">
+          <option>Select Job Type</option>
+          <option>Part Time</option>
+          <option>Full Time</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Salary</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <input type="text" id="salary" class="form-control" formControlName="salary" placeholder="Enter Salary">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">English Proficiency</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <select formControlName="englishLevel" class="form-control">
+          <option>Select</option>
+          <option>No English</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+          <option>Bilingual</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">E-Verify</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" formControlName="vrfy" class="form-check-input" value="1">
+            <span class="custom-radio-button"></span>
+            Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="vrfy" value="0">
+            <span class="custom-radio-button"></span>
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Hours</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <input type="text" class="form-control" formControlName="hours" value="" placeholder="Working Hours">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Work Experience</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="exp" value="1">
+            <span class="custom-radio-button"></span>
+            Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="exp" value="0">
+            <span class="custom-radio-button"></span>
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">No. of Vacancies</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <input type="number" min="1" class="form-control" formControlName="vacanciesNumber" placeholder="Enter number of vacancies">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Start Date</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <p-calendar formControlName="sDate" [showTime]="true" >
+        </p-calendar>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">End Date</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+          <p-calendar formControlName="eDate" [showTime]="true" >
+            </p-calendar>
+        <!-- <p-calendar class="ng-pristine ng-valid ng-touched" [showTime]="true" >
+          <input autocomplete="off" type="text" formControlName="eDate" class="form-control"
+              placeholder="">
+        </p-calendar> -->
+        <!-- <input type="date" class="form-control" formControlName="endDate" placeholder="Enter number of vacancies"> -->
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Location</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <input type="text" class="form-control" formControlName="location" placeholder="Location">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Skills</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <select formControlName="skills" class="form-control" multiple>
+          <option>Select Skills</option>
+          <option>Adobe Photoshop</option>
+          <option>Adobe Illustrator</option>
+          <option>HTML/HTML5</option>
+          <option>Css/Css3</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Description</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <textarea class="form-control" formControlName="description" value="" placeholder="Description here"></textarea>
+      </div>
+    </div>
+    <!-- <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">Upload File</label>
+      <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+        <div class="upload-wrapper">
+          <input type="file" id="" class="form-control" name="" value="">
+          <span class="custom-upload-file">
+            <i class="fa fa-upload" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </div> -->
+    <div class="form-group row">
+      <label class="col-lg-4 col-md-4 col-sm-12 col-12 col-form-label">&nbsp;</label>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input type="checkbox" formControlName="spanishTranslationNeeded" class="form-check-input">
+            <span class="custom-checkbox"></span>
+            I want Spanish translation
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="btn-sec">
+      <input type="submit" class="btn btn-primary btn-st" value="Proceed & Make Payment">
+    </div>
+  </form>
+</div>

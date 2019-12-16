@@ -1,0 +1,33 @@
+<div class="profile-side-bar">
+  <div class="user-details">
+    <div class="avatar">
+      <div class="avatar-inner">
+        <img src="assets/images/avatar.png" alt="Avatar">
+      </div>
+      <div class="verified"><i class="fa fa-check-circle-o" aria-hidden="true"></i></div>
+    </div>
+    <h6 class="user_name">{{userData.name}}</h6>
+    <p *ngIf="isProvider" class="user-post">{{userData.organisationDetails.designation}}</p>
+    <p *ngIf="isProvider" class="user-company">{{userData.organisationDetails.name}}</p>
+    <p class="user-email"><a href="mailto:{{userData.email}}">{{userData.email}}</a></p>
+    <ul class="user-rating">
+      <li class="rated"><i class="fa fa-star" aria-hidden="true"></i></li>
+      <li class="rated"><i class="fa fa-star" aria-hidden="true"></i></li>
+      <li class="rated"><i class="fa fa-star" aria-hidden="true"></i></li>
+      <li class="rated"><i class="fa fa-star" aria-hidden="true"></i></li>
+      <li class=""><i class="fa fa-star" aria-hidden="true"></i></li>
+    </ul>
+  </div>
+  <ul class="side-bar-menu">
+    <li *ngIf="isProvider" routerLinkActive="active"><a href="/job-provider-profile">Profile</a></li>
+    <li *ngIf="isSeeker" routerLinkActive="active"><a href="/job-seeker-profile">Profile</a></li>
+    <li *ngIf="isProvider" routerLinkActive="active"><a href="/dashboard">Dashboard</a></li>
+    <li *ngIf="isProvider" routerLinkActive="active"><a href="/job-post">Job Post</a></li>
+    <li *ngIf="isProvider" routerLinkActive="active"><a href="#">Service Plan</a></li>
+    <li *ngIf="isSeeker" routerLinkActive="active"><a href="#">Change Password</a></li>
+    <li *ngIf="isSeeker" routerLinkActive="active"><a href="#">Invite Others</a></li>
+    <li *ngIf="isSeeker" routerLinkActive="active"><a href="#">Appointments</a></li>
+    <li *ngIf="isSeeker" routerLinkActive="active"><a href="#">Service</a></li>
+    <li *ngIf="isSeeker" routerLinkActive="active"><a href="/my-jobs">My Jobs</a></li>
+  </ul>
+</div>

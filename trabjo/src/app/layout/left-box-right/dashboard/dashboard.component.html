@@ -1,0 +1,27 @@
+<div class="outer-wrapper">
+  <div class="head-sec">
+    <h6>Dashboard</h6>
+  </div>
+  <div class="job-list-wrapper">
+    <div class="job-list" *ngFor="let job of jobList ;let i = index">
+      <div class="company-logo">
+        <img src="../../../../assets/images/company-logo.png" alt="Logo">
+      </div>
+      <h6 class="job-title">
+        {{job?.jobRoleId?.name}}
+      <div class="edit-vacancy">
+        <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <span class="vacancy">{{job?.vacanciesNumber}} vacancies</span>
+      </div>
+      </h6>
+      <h6 class="company-name">World Travel Company</h6>
+      <p class="job-role">{{job?.jobType}}</p>
+      <p class="company-address"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job?.location}}</p>
+      <p class="job-description">{{job?.description}}</p>
+      <div class="btn-left">
+        <a href="#" class="btn btn-primary btn-st-suc-outline">View Applicants</a>
+        <a href="/job-detail" class="btn btn-primary btn-st-outline">Job Details</a>
+      </div>   
+    </div>
+  </div>
+</div>

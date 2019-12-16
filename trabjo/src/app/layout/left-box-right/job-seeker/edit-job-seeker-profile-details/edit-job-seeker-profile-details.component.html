@@ -1,0 +1,186 @@
+<div class="outer-wrapper">
+  <div class="profile-banner">
+    <img src="/assets/images/job-seeker-banner.png" alt="Banner">
+    <div class="overlay">
+      <div class="profile-inner">
+        <div class="seeker-avatar-outer">
+          <div class="seeker-avatar-inner">
+            <img src="/assets/images/avatar.png" alt="Avatar">
+          </div>
+          <a href="/edit-job-seeker-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </div>
+        <h5>{{userDetails?.name}}</h5>
+        <p>{{userDetails?.email}}</p>
+        <p>{{userDetails?.phoneNumber}}</p>
+        <p *ngIf="userDetails?.experienced == true">
+          Experienced
+        </p>
+        <p *ngIf="userDetails?.experienced == false">
+          Fresher
+        </p>
+        <div class="btn-link">
+          <a href="#">Recommendation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.profile-banner-->
+  <div class="update-profile-sec">
+    <ul class="nav nav-tabs nav-justified" id="updateProfile" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information"
+          aria-selected="true">Personal Information</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="experience-tab" data-toggle="tab" href="#experience" role="tab" aria-controls="experience"
+          aria-selected="false">Work Experience</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="proximity-tab" data-toggle="tab" href="#proximity" role="tab" aria-controls="proximity"
+          aria-selected="false">Proximity</a>
+      </li>
+    </ul>
+    <!-- <form [formGroup]="jobSeekerProfileForm" (ngSubmit)="updateProfile(jobSeekerProfileForm.valid,jobSeekerProfileForm.value)"> -->
+      <div class="tab-content" id="updateProfileContent">
+        <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
+          <form [formGroup]="jobSeekerProfilePersonalForm" (ngSubmit)="updatePersonalProfile(jobSeekerProfilePersonalForm.valid,jobSeekerProfilePersonalForm.value)">
+            <h6>Personal Information</h6>
+            <div class="form-group">
+                <p-calendar formControlName="dob" class="form-control">
+                </p-calendar>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="address" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <select class="form-control" formControlName="stateId" (change)="getCities($event.target.value)">
+                <option value="">Select State</option>	
+                <option *ngFor="let state of states" value="{{state._id}}">{{state.name}}</option>								
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" formControlName="cityId">
+                <option value="">Select City</option>		
+                <option *ngFor="let city of cities" value="{{city._id}}">{{city.name}}</option>							
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="zipcode" placeholder="Zip">
+            </div>
+            <button type="submit" class="btn btn-primary btn-st">Save and Continue</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
+          <form [formGroup]="jobSeekerProfileExperienceForm" (ngSubmit)="updateExperienceProfile(jobSeekerProfileExperienceForm.valid,jobSeekerProfileExperienceForm.value)">
+            <h6>Skills</h6>
+            <div class="form-group">
+              <select class="form-control" multiple formControlName="skills">
+                <option value="">Select Skills</option>
+                <option value="Adobe Photoshop">Adobe Photoshop</option>
+                <option value="Adobe Illustrator">Adobe Illustrator</option>
+                <option value="HTML/HTML5">HTML/HTML5</option>
+                <option value="Css/Css3">Css/Css3</option>
+              </select>
+            </div>
+            <h6>Work Experience</h6>
+            <div id="repeater-container" formArrayName="experiences"
+            *ngFor="let experiences of experienceData.controls; let i = index;">
+              <div class="experience-repeater" id="experience-repeaterrow0" [formGroupName]="i">
+                <div class="form-group">
+                  <input type="text" formControlName="position" class="form-control" placeholder="Position">
+                </div>
+                <div class="form-group">
+                  <input type="text" formControlName="companyName" class="form-control" placeholder="Company Name">
+                </div>
+                <div class="form-group">
+                  <p-calendar formControlName="startDate" class="form-control">
+                  </p-calendar>
+                </div>
+                <div class="form-group">
+                  <p-calendar formControlName="endDate" class="form-control">
+                  </p-calendar>
+                </div>
+                <div class="form-group">
+                  <textarea formControlName="description" class="form-control" placeholder="Description here"></textarea>
+                </div>
+                <div class="form-group removerepeater-btn" *ngIf="i > 0">
+                  <button type="button" data-id="0" (click)="deleteExperience(i)" class="btn btn-primary btn-repeat"><i class="fa fa-minus-circle"
+                      aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group repeater-btn">
+              <button type="button" (click)="addExperience()" data-count="0" class="btn btn-primary btn-repeat"><i class="fa fa-plus-circle"
+                  aria-hidden="true"></i></button>
+            </div>
+            <div class="form-group">
+              <label>Attach your Resume or CV</label>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                  <div class="upload-wrapper">
+                    <input type="file" formControlName="resume" class="form-control" >
+                    <span class="custom-upload-file">
+                      <i class="fa fa-upload" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Salary</label>
+              <input type="text" formControlName="salary" class="form-control" placeholder="Salary">
+            </div>
+            <div class="form-group">
+              <label>References</label>
+              <div class="accordion" id="accordionreferences">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                        References 1
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionreferences">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <input type="text" formControlName="referenceName1" class="form-control" name="" value="" placeholder="Name">
+                      </div>
+                      <div class="form-group">
+                        <input type="email" formControlName="referenceEmail1" class="form-control" name="" value="" placeholder="Email Address">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        References 2
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionreferences">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <input type="text" formControlName="referenceName2" class="form-control" name="" value="" placeholder="Name">
+                      </div>
+                      <div class="form-group">
+                        <input type="email" formControlName="referenceEmail2" class="form-control" name="" value="" placeholder="Email Address">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-st">Save and Continue</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="proximity" role="tabpanel" aria-labelledby="proximity-tab">sdjkafl;asjdf</div>
+      </div>
+    <!-- </form> -->
+  </div>
+</div>

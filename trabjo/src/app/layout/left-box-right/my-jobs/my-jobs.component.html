@@ -1,0 +1,71 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+  <div class="outer-wrapper">
+    <div class="head-sec">
+      <h6>My Jobs</h6>
+    </div>
+    <div class="row filter-sec">
+      <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+        <button type="button" data-toggle="modal" data-target="#filter" class="btn btn-primary btn-block btn-st-outline">Filters</button>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 col-12 ml-auto">
+        <select class="form-control">
+          <option>Sort By</option>
+          <option>All</option>
+          <option>Applied</option>
+          <option>Hired</option>
+        </select>
+      </div>
+    </div>
+    <div class="job-list-wrapper">
+      <div class="job-list hired" *ngFor="let job of jobList ;let i = index">
+        <div class="company-logo">
+          <img src="./assets/images/company-logo.png" alt="Logo">
+        </div>
+        <h6 class="job-title">
+          {{job?.jobRoleId?.name}}
+        <div class="edit-vacancy">
+          <a href="#">Report an Issue</a>
+          <span class="vacancy">Hired</span>
+        </div>
+        </h6>
+        <h6 class="company-name">World Travel Company</h6>
+        <p class="job-role">{{job?.jobType}}</p>
+        <p class="company-address"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job?.location}}</p>
+        <p class="job-description">{{job?.description}}</p>
+      </div>
+      <div *ngIf="!pageControl.count">No Jobs Applied Yet</div>
+      <!-- <div class="job-list applied">
+        <div class="company-logo">
+          <img src="./assets/images/company-logo.png" alt="Logo">
+        </div>
+        <h6 class="job-title">
+        Job 1
+        <div class="edit-vacancy">
+          <a href="#">Report an Issue</a>
+          <span class="vacancy">Applied</span>
+        </div>
+        </h6>
+        <h6 class="company-name">World Travel Company</h6>
+        <p class="job-role">Sr. PHP Team Lead</p>
+        <p class="company-address"><i class="fa fa-map-marker" aria-hidden="true"></i> 19 King Dr. Newington, CT 06111</p>
+        <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+      </div>
+      
+      <div class="job-list unapplied">
+        <div class="company-logo">
+          <img src="./assets/images/company-logo.png" alt="Logo">
+        </div>
+        <h6 class="job-title">
+        Job 1
+        <div class="edit-vacancy">
+          <a href="#">Report an Issue</a>
+        </div>
+        </h6>
+        <h6 class="company-name">World Travel Company</h6>
+        <p class="job-role">Sr. PHP Team Lead</p>
+        <p class="company-address"><i class="fa fa-map-marker" aria-hidden="true"></i> 19 King Dr. Newington, CT 06111</p>
+        <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+      </div>
+    </div> -->
+  </div>
+</div><!--/.profile-content-end-here-->

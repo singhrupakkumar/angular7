@@ -1,0 +1,97 @@
+<article class="st_content">
+		<section class="user-module">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="outer_wrapper">
+							<div class="head-sec">
+								<h1>Job Applicant Sign up</h1>
+							</div>
+							<div class="row align-items-center">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+									<div class="form-wrapper">
+										<h2>Hi there!</h2>
+										<p>Register your account</p>
+										<form [formGroup]="form" (ngSubmit)="signUp(form.valid,form.value)">
+											<div class="form-group">
+												<input  (keydown.space)="$event.preventDefault()" formControlName="name"
+													type="text" class="form-control" placeholder="Name">
+												<div class="text-error" *ngIf="form.controls['name'].errors?.required && show">Please enter
+														name!
+												</div>
+											</div>
+											<div class="form-group">
+												<input (keydown.space)="$event.preventDefault()" formControlName="email"
+												type="email" class="form-control" placeholder="Email">
+												<div class="text-error" *ngIf="form.controls['email'].errors?.required && show">Please enter
+												email!
+												</div>
+												<div class="text-error" *ngIf="form.controls['email'].errors?.email && show">Please enter valid
+												email!
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="password" class="form-control" (keydown.space)="$event.preventDefault()"
+												formControlName="password" placeholder="Password">
+												<div class="text-error" *ngIf="form.controls['password'].errors?.required && show">Please enter
+													password!
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="password" class="form-control" (keydown.space)="$event.preventDefault()"
+													formControlName="confirmPass" placeholder="Confirm Password">
+												<div class="text-error" *ngIf="form.hasError('notSame')">Passwords do not match
+												</div>												
+											</div>
+											<div class="form-group">
+												<input type="tel" class="form-control" (keydown.space)="$event.preventDefault()"
+												formControlName="phoneNumber" placeholder="Phone Number">
+												<div class="text-error" *ngIf="form.controls['phoneNumber'].errors?.required && show">Please enter
+														phone number!
+													</div>
+											</div>
+											<div class="form-group">
+												<div class="form-check-inline">
+													<label class="form-check-label">
+														<input type="radio" class="form-check-input" formControlName="experienced" value="1">
+														<span class="custom-radio-button"></span>
+														Employee
+													</label>
+												</div>
+												<div class="form-check-inline">
+													<label class="form-check-label">
+														<input type="radio" class="form-check-input" formControlName="experienced" value="0">
+														<span class="custom-radio-button"></span>
+														Fresher
+													</label>
+												</div>
+											</div>
+											<div class="form-group form-check">
+												<label class="form-check-label">
+													<input type="checkbox" class="form-check-input"> 
+													<span class="custom-checkbox"></span>
+													I accept the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
+												</label>
+											</div>
+											<div class="form-group btn-sec">
+												<input type="submit" class="btn btn-primary btn-st" value="Register">
+											</div>
+										</form>
+										<div class="account-info">
+											<p>Do you already have an account? <a href="/login">Login</a></p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+									<div class="inner-sec">
+										<h2>Save Your Account Now</h2>
+										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!--/.user-module-->
+	</article><!--/.st_content-->

@@ -1,0 +1,33 @@
+{
+  "name": "job-posting-backend",
+  "version": "1.0.0",
+  "description": "job portal",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://himanshuG826@bitbucket.org/codebrew_web/job-posting-backend.git"
+  },
+  "author": "Himanshu Garg",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/codebrew_web/job-posting-backend#readme",
+  "dependencies": {
+    "@hapi/boom": "^7.4.2",
+    "@hapi/hapi": "^18.3.1",
+    "@hapi/inert": "^5.2.1",
+    "@hapi/joi": "^15.1.0",
+    "@hapi/vision": "^5.5.2",
+    "async": "^3.1.0",
+    "fs-extra": "^8.1.0",
+    "get-video-duration": "^1.0.3",
+    "hapi-auth-jwt2": "^8.6.1",
+    "hapi-swagger": "^10.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.6.9",
+    "request": "^2.88.0"
+  }
+}

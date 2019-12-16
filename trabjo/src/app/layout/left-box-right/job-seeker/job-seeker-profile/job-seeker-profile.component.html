@@ -1,0 +1,57 @@
+<div class="outer-wrapper">
+  <div class="profile-banner">
+    <img src="/assets/images/job-seeker-banner.png" alt="Banner">
+    <div class="overlay">
+      <div class="profile-inner">
+        <div class="seeker-avatar-outer">
+          <div class="seeker-avatar-inner">
+            <img src="/assets/images/avatar.png" alt="Avatar">
+          </div>
+          <a href="/edit-job-seeker-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </div>
+        <h5>{{userDetails?.name}}</h5>
+        <p>{{userDetails?.email}}</p>
+        <p>{{userDetails?.phoneNumber}}</p>
+        <p *ngIf="userDetails?.experienced == true">
+          Experienced
+        </p>
+        <p *ngIf="userDetails?.experienced == false">
+          Fresher
+        </p>
+        <div class="btn-link">
+          <a href="#">Recommendation</a>
+        </div>
+      </div>
+    </div>
+  </div><!--/.profile-banner-->
+  <div class="job-seeker-info">
+    <h6>Profile Information</h6>
+    <div class="seeker-personal-info">
+      <p><strong>Date Of Birth:</strong> {{ userDetails?.dob | date:'dd-MM-yyyy'  }}</p>
+      <p><strong>Address:</strong> {{userDetails?.address}}</p>
+      <p><strong>City:</strong> {{userDetails?.cityId?.name}}</p>
+      <p><strong>State:</strong> {{userDetails?.stateId?.name}}</p>
+      <p><strong>Zipcode:</strong> {{userDetails?.zipcode}}</p>
+      <p><strong>Skills:</strong> <span *ngFor="let skills of userDetails?.skills ;let i = index"> {{skills}} ,</span></p>
+    </div>
+  </div>
+  <div class="job-seeker-workinfo">
+    <h6>Work Experience</h6>
+    <div class="work-info-list" *ngFor="let experience of userDetails?.experienceData ;let i = index">
+      <p><strong>Company Name:</strong> {{experience?.companyName}}</p>
+      <p><strong>Position:</strong>  {{experience?.position}}</p>
+      <p><strong>Start Date:</strong>  {{experience?.startDate |  date:'dd-MM-yyyy' }}</p>
+      <p><strong>End Date:</strong> {{experience?.endDate |  date:'dd-MM-yyyy'}}</p>
+      <p><strong>Description:</strong> {{experience?.description}}</p>
+    </div>
+  </div>
+  <div class="proximity-info">
+    <h6>Proximity</h6>
+    <p><strong>Job Role:</strong> NA</p>
+    <p><strong>Job Type:</strong> NA</p>
+    <p><strong>Desired Salary:</strong> NA</p>
+    <p><strong>Location:</strong> NA</p>
+    <p><strong>Radius:</strong> NA</p>
+  </div>
+  <a href="/edit-job-seeker-profile-details" class="btn btn-primary btn-st">Edit Profile</a>
+</div>

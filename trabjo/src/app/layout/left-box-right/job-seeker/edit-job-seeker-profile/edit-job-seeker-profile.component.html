@@ -1,0 +1,47 @@
+<div class="outer-wrapper">
+  <form [formGroup]="jobSeekerBasicProfileForm" (ngSubmit)="updateProfile(jobSeekerBasicProfileForm.valid,jobSeekerBasicProfileForm.value)">
+    <div class="personal-details">
+      <div class="avatar">
+        <div class="avatar-inner">
+          <img src="/assets/images/avatar.png" alt="Avatar">
+        </div>
+        <a href="#">
+          <input type="file" name="" value="">
+          <i class="fa fa-camera" aria-hidden="true"></i>
+        </a>
+      </div>	
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" formControlName="email" disabled>
+      </div>
+      <div class="form-group">
+        <input type="tel" class="form-control" formControlName="phoneNumber" placeholder="Phone Number">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" formControlName="experienced" value="1">
+          <span class="custom-radio-button"></span>
+          Employee
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" formControlName="experienced" value="0">
+          <span class="custom-radio-button"></span>
+          Fresher
+        </label>
+      </div>
+    </div>
+    <div class="form-group btn-sec">
+      <input type="submit" class="btn btn-primary btn-st" value="Save Changes">
+    </div>
+  </form>
+  <div class="foot-sec">
+    <a href="#">Changes Password</a>
+    <a href="#">Add Card</a>
+  </div>
+</div>

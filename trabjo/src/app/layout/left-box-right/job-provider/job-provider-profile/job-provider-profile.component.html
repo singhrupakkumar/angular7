@@ -1,0 +1,29 @@
+<div class="outer-wrapper">
+  <div class="head-sec">
+    <h6>Profile</h6>
+  </div>
+  <div class="profile-wrapper">
+    <div class="avatar">
+      <div class="avatar-inner">
+        <img src="/assets/images/avatar.png" alt="Avatar">
+      </div>
+      <a href="/edit-job-provider-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    </div>
+    <div class="inner-wrapper">
+      <div class="personal-details">
+        <p>{{userDetails?.name}}</p>
+        <p *ngIf="userDetails?.email">{{userDetails?.email}}</p>
+        <p *ngIf="userDetails?.phoneNumber">{{userDetails?.countryCode}} {{userDetails?.phoneNumber}}</p>
+        <p *ngIf="userDetails?.address">{{userDetails?.address}}</p>
+        <p *ngIf="userDetails?.stateId">{{userDetails?.stateId?.name}} {{userDetails?.zipcode}}</p>
+      </div>
+      <div class="organisation-details-view">
+        <h6>Organisation Details</h6>
+        <p>{{userDetails?.organisationDetails?.designation}}</p>
+        <p>{{userDetails?.organisationDetails?.name}}</p>
+        <p>{{userDetails?.organisationDetails?.address}} {{userDetails?.organisationDetails?.address1}}, {{userDetails?.organisationDetails?.cityId?.name}}</p>
+        <p>{{userDetails?.organisationDetails?.stateId?.name}} {{userDetails?.organisationDetails?.zipcode}}</p>
+      </div>
+    </div>
+  </div>
+</div>
